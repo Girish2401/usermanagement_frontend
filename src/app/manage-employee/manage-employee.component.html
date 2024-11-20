@@ -1,0 +1,13 @@
+<div class="w-full h-full user-details" [formGroup]="employeeDetails">
+  <div>
+    <label for="">Id : </label>
+    <input type="text" pInputText formControlName="cid" /><br />
+  </div>
+  <div>
+    <label for="">Name : </label>
+    <input type="text" pInputText formControlName="name" /><br />
+  </div>
+  <div>
+    <p-button label="Submit" (onClick)="updateUser()" ></p-button>
+  </div>
+</div>

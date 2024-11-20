@@ -1,0 +1,22 @@
+<p-calendar [(ngModel)]="selectedDate" (ngModelChange)="onDateChange($event)" [showIcon]="true"
+  [dateFormat]="'dd-mm-yyyy'"></p-calendar>
+
+
+<p-table [value]="employeeVisitingList">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Employee Id</th>
+      <th>Employee Name</th>
+      <th>Checkin-time</th>
+      <th>Checkout-time</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-employee>
+    <tr>
+      <td>{{employee.employee_id}}</td>
+      <td> {{employee.employee_name}} </td>
+      <td>{{employee.checkin_time | date: 'HH:mm:ss' }} </td>
+      <td>{{employee.checkout_time | date: 'HH:mm:ss' }} </td>
+    </tr>
+  </ng-template>
+</p-table>

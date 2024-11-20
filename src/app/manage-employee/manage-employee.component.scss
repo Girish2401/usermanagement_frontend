@@ -1,0 +1,12 @@
+.user-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // justify-content: center;
+}
+
+label {
+  display: inline-block;
+  width: 100px;
+  text-align: right;
+}

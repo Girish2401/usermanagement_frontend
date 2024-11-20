@@ -1,0 +1,29 @@
+<div class="flex justify-content-between">
+  <span class="p-input-icon-left">
+    <i class="pi pi-search"></i>
+    <input type="text" pInputText placeholder="Search" />
+  </span>
+  <p-button label="Add User" icon="pi pi-plus" routerLink="/add"></p-button>
+</div>
+<p-table [value]="employeeList">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Employee Name</th>
+      <th>Employee Id</th>
+      <th>Action</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-employee>
+    <tr>
+      <td> <a (click)="getEmployeeVisitingDetails(employee)" >{{employee.name}} </a></td>
+      <td>{{employee.cid}}</td>
+      <td>
+        <div class="flex align-items-center">
+          <span class="pi pi-user-edit pr-2 text-green-300" (click)="performOpertaion('edit',employee)"></span>
+          <span class="pi pi-trash " [ngStyle]="{color: 'red'}" (click)="performOpertaion('delete',employee)"></span>
+        </div>
+      </td>
+
+    </tr>
+  </ng-template>
+</p-table>

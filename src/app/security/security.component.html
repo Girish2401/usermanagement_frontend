@@ -1,0 +1,60 @@
+<div class="w-full h-full flex">
+  <div class="w-10">
+    <p-tabView>
+      <p-tabPanel header="Requested">
+        <p-table [value]="pending_rejected_visitors">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Employee Name</th>
+              <th>status</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-visitor>
+            <tr>
+              <td>{{visitor.employee_name}}</td>
+              <td>{{visitor.status}}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </p-tabPanel>
+      <p-tabPanel header="check-In">
+        <p-table [value]="checkin_visitors">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Employee Name</th>
+              <th>Allow Access</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-visitor>
+            <tr>
+              <td>{{visitor.employee_name}}</td>
+              <p-button label="Allow Access" (onClick)="allowVisitor(visitor)"></p-button>
+            </tr>
+          </ng-template>
+        </p-table>
+      </p-tabPanel>
+      <p-tabPanel header="check-out">
+        <p-table [value]="checkout_visitors">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Employee Name</th>
+              <th>exit Access</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-visitor>
+            <tr>
+              <td>{{visitor.employee_name}}</td>
+              <p-button label="Allow exit" *ngIf="visitor.approver_checkout_request_status && visitor.isCheckedIn"
+                (onClick)="allowVisitorExit(visitor)"></p-button>
+              <p-button label="Request Exit" *ngIf="!visitor.approver_checkout_request_status && visitor.isCheckedIn"
+                (onClick)="requestVisitorExit(visitor)"></p-button>
+            </tr>
+          </ng-template>
+        </p-table>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+  <div class="w-2 pl-5 mt-2">
+    <p-button label="Add Visitor" icon="pi pi-plus" routerLink="/visitor/add"></p-button>
+  </div>
+</div>
