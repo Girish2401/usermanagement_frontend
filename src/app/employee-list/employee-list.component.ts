@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmployeeServiceService } from '../employee-service.service';
 
@@ -9,10 +9,17 @@ import { EmployeeServiceService } from '../employee-service.service';
 })
 export class EmployeeListComponent implements OnInit {
   public employeeList: Array<any> = [];
+  @ViewChild('dt') dt: any; // Add a non-null type if you're sure it'll exist
+
   constructor(private router: Router, private employeeService: EmployeeServiceService) { }
 
   ngOnInit(): void {
     this.getAllEmployees();
+  }
+
+  onInput(event: Event) {
+    const inputValue = (event.target as HTMLInputElement).value;
+    this.dt?.filterGlobal(inputValue, 'contains');
   }
 
   public getAllEmployees() {

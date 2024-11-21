@@ -1,1 +1,15 @@
+<button (click)="togglePanel()">Open Side Panel</button>
+
+<p-sidebar [(visible)]="isPanelOpen" position="left" [transitionOptions]="'0ms'" [modal]="true" [showCloseIcon]="true">
+  <ng-container *ngFor="let tab of tabs">
+    <div class="w-full surface-ground h-2rem flex align-items-center" (click)="changeRoute(tab.route)">
+      <i [class]="tab.icon" class="pr-3"></i>
+      <label> {{tab.name}} </label>
+    </div>
+
+  </ng-container>
+
+</p-sidebar>
+
+
 <router-outlet></router-outlet>

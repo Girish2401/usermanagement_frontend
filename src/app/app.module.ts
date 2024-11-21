@@ -22,6 +22,7 @@ import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 import { EmployeeVisitingDetailsComponent } from './employee-visiting-details/employee-visiting-details.component';
 import { CalendarModule } from 'primeng/calendar';
+import { SidebarModule } from "primeng/sidebar"
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { CalendarModule } from 'primeng/calendar';
     CalendarModule,
     BrowserAnimationsModule,
     ButtonModule,
+    SidebarModule,
     InputTextModule,
     TableModule,
     TabViewModule
