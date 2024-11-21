@@ -16,7 +16,7 @@
           <ng-template pTemplate="body" let-visitor>
             <tr (click)="confirm($event,visitor)">
               <td>{{visitor.employee_name}}</td>
-              <p-button label="Allow Access" (onClick)="approveVisitor(visitor)"></p-button>
+              <p-button label="Allow Access"></p-button>
             </tr>
           </ng-template>
         </p-table>
@@ -32,7 +32,7 @@
           <ng-template pTemplate="body" let-visitor>
             <tr (click)="confirmCheckout($event,visitor)">
               <td>{{visitor.employee_name}}</td>
-              <p-button label="Approve exit" (onClick)="approveVisitorExit(visitor)"></p-button>
+              <p-button label="Approve exit"></p-button>
             </tr>
           </ng-template>
         </p-table>

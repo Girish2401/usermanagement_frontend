@@ -12,12 +12,12 @@ export class EmployeeListComponent implements OnInit {
   constructor(private router: Router, private employeeService: EmployeeServiceService) { }
 
   ngOnInit(): void {
-    this.getAllUsers();
+    this.getAllEmployees();
   }
 
-  public getAllUsers() {
+  public getAllEmployees() {
     this.employeeService.getAllEmployees().subscribe((employees: any) => {
-      this.employeeList = employees;
+      this.employeeList = employees.data;
     })
   }
   public performOpertaion(operation: string, employee: any) {
@@ -26,9 +26,9 @@ export class EmployeeListComponent implements OnInit {
         this.router.navigate(['/employee', employee.cid]);
         break;
       case "delete":
-        // this.employeeService.deleteUser(user).subscribe((userId: any) => {
-        //   this.getAllUsers();
-        // });
+        this.employeeService.deleteEmployee(employee.cid).subscribe((employeeId: any) => {
+          this.getAllEmployees();
+        });
         break;
     }
   }

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class VisitorService {
 
-  // private api_url: string = "http://localhost:3000"
+  // private api_url: string = "http://localhost:3002"
   private api_url: string = "https://usermanagement-backend-ocsh.onrender.com"
 
   constructor(private http: HttpClient) { }
@@ -18,7 +18,7 @@ export class VisitorService {
       params = new HttpParams();
       params = params.set('date', dateValue)
     }
-    return this.http.get(`${this.api_url}/visitors`, { params });
+    return this.http.get(`${this.api_url}/visitor`, { params });
   }
 
   public getVisitor(id: string): Observable<any> {

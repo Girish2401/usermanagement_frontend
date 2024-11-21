@@ -7,13 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class EmployeeServiceService {
 
-  // private api_url: string = "http://localhost:3000"
+  // private api_url: string = "http://localhost:3002"
   private api_url: string = "https://usermanagement-backend-ocsh.onrender.com"
 
   constructor(private http: HttpClient) { }
 
   public getAllEmployees(): Observable<any> {
-    return this.http.get(`${this.api_url}/employees`)
+    return this.http.get(`${this.api_url}/employee`)
   }
 
   public getEmployee(id: string): Observable<any> {
@@ -24,9 +24,9 @@ export class EmployeeServiceService {
   public updateEmployee(employeeId: string, employeeDetails: any): Observable<any> {
     return this.http.put<any>(`${this.api_url}/employee/${employeeId}`, employeeDetails);
   }
-  // public deleteUser(user: IUser): Observable<string> {
-  //   return this.http.delete<string>(`${this.api_url}/user/${user._id}`);
-  // }
+  public deleteEmployee(employeeId: any): Observable<string> {
+    return this.http.delete<string>(`${this.api_url}/employee/${employeeId}`);
+  }
 
   public createEmployee(employee: any): Observable<any> {
     return this.http.post<any>(`${this.api_url}/employee`, employee);

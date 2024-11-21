@@ -22,7 +22,7 @@ export class SecurityComponent implements OnInit {
   public getAllVisitors() {
     this.visitorService.getAllVisitors().subscribe((res) => {
       console.log(res);
-      this.visitors = res;
+      this.visitors = res.data;
       this.pending_rejected_visitors = this.visitors.filter((visitor: any) => ["pending", "rejected"].includes(visitor.status));
       this.checkin_visitors = this.visitors.filter((visitor: any) => visitor.approver_checkin_request_status && visitor.status == "accepted" && !visitor.isCheckedIn);
       this.checkout_visitors = this.visitors.filter((visitor: any) => visitor.isCheckedIn);

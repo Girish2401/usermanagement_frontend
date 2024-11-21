@@ -24,22 +24,10 @@ export class ApproverComponent implements OnInit {
   public getAllVisitors() {
     this.visitorService.getAllVisitors().subscribe((res) => {
       console.log(res);
-      this.visitors = res;
+      this.visitors = res.data;
       this.checkin_visitors = this.visitors.filter((visitor: any) => visitor.status == 'pending' && visitor.isCheckedIn == false);
       this.checkout_visitors = this.visitors.filter((visitor: any) => visitor.status == 'pending' && visitor.isCheckedIn == true);
     })
-  }
-
-  public approveVisitor(visitor: any) {
-    // visitor.status = "accepted";
-    // visitor.approver_checkin_request_status = true;
-    // this.visitorService.updateVisitor(visitor._id, visitor).subscribe((res) => {
-    //   console.log(res);
-    // });
-  }
-
-  public approveVisitorExit(visitor: any) {
-
   }
 
   confirm(event: any, visitor: any) {
@@ -93,5 +81,4 @@ export class ApproverComponent implements OnInit {
       }
     });
   }
-
 }
